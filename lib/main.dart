@@ -38,6 +38,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool isRecording = false;
   int time = 0;
+  void startRecord() async {
+    FlutterScreenRecording.startRecordScreen('test$time');
+  }
+
+  void stopRecord() async {
+    String path = await FlutterScreenRecording.stopRecordScreen;
+  }
 
   void toggleRecording() async {
     setState(() {
@@ -61,23 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void startRecord() async {
-    await FlutterScreenRecording.startRecordScreen('test$time');
-    timer();
-  }
-
-  void stopRecord() async {
-    String path = await FlutterScreenRecording.stopRecordScreen;
-    print("Opening video");
-    print(path);
-  }
-
   @override
   void initState() {
     super.initState();
-
     requestPermissions();
-
     timer();
   }
 

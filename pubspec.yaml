@@ -37,7 +37,9 @@ dependencies:
   flutter_screen_recording: 
     git :
       url : https://github.com/jtmuller5/flutter_screen_recording
-  flutter_foreground_task: ^3.2.2
+  flutter_foreground_plugin:
+    git:
+      url: https://github.com/jja08111/flutter_foreground_service_plugin
 
 dev_dependencies:
   flutter_test:
