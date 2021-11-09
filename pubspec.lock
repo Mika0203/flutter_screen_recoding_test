@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -83,8 +90,8 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7881eab910882c081d0e2e88d50bc0414c8bc8d1"
-      url: "https://github.com/jtmuller5/flutter_screen_recording"
+      resolved-ref: ad6b4325a28c2ad84f9f3827737510d76306f797
+      url: "https://github.com/Mika0203/flutter_screen_recording"
     source: git
     version: "1.1.0"
   flutter_test:
@@ -92,6 +99,25 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.15.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.3"
   lints:
     dependency: transitive
     description:
@@ -181,6 +207,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.6"
+  video_player_platform_interface:
+    dependency: transitive
+    description:
+      name: video_player_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
+  video_player_web:
+    dependency: transitive
+    description:
+      name: video_player_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
 sdks:
-  dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.10.0"
+  dart: ">=2.14.0 <3.0.0"
+  flutter: ">=2.5.0"

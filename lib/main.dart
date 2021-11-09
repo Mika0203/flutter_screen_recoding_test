@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screen_recording/flutter_screen_recording.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,13 +39,27 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isRecording = false;
+  String? path;
   int time = 0;
+  late VideoPlayerController c;
+
   void startRecord() async {
-    FlutterScreenRecording.startRecordScreen('test$time');
+    // Directory tempDir = await getTemporaryDirectory();
+    // String tempPath = tempDir.path;
+    // print(tempPath);
+
+    // Directory appDocDir = await getApplicationDocumentsDirectory();
+    // String appDocPath = appDocDir.path;
+    // print(appDocPath);
+    FlutterScreenRecording.startRecordScreen('$time');
   }
 
   void stopRecord() async {
-    String path = await FlutterScreenRecording.stopRecordScreen;
+    String _path = await FlutterScreenRecording.stopRecordScreen;
+    setState(() {
+      print("$_path !!!!");
+      path = _path;
+    });
   }
 
   void toggleRecording() async {
@@ -61,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void timer() {
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         time++;
       });
@@ -71,16 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    requestPermissions();
     timer();
-  }
 
-  requestPermissions() async {
-    // await PermissionHandler().requestPermissions([
-    //   PermissionGroup.storage,
-    //   PermissionGroup.photos,
-    //   PermissionGroup.microphone,
-    // ]);
+    c = VideoPlayerController.file(
+        File('/data/user/0/com.example.record_test/files/71.mp4'))
+      ..initialize().then((value) => c.play());
   }
 
   @override
@@ -93,12 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          if (path != null) ...[
+            Text(path!),
+          ],
+          Container(
+            width: 300,
+            height: 500,
+            child: VideoPlayer(c),
+          ),
           Text(time.toString()),
           Center(
             child: CupertinoButton(
               child: Text(
                 isRecording.toString(),
-                style: TextStyle(fontSize: 32),
+                style: const TextStyle(fontSize: 32),
               ),
               onPressed: toggleRecording,
             ),

@@ -36,10 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screen_recording: 
     git :
-      url : https://github.com/jtmuller5/flutter_screen_recording
+      url : https://github.com/Mika0203/flutter_screen_recording
   flutter_foreground_plugin:
     git:
       url: https://github.com/jja08111/flutter_foreground_service_plugin
+  video_player: ^2.1.10
 
 dev_dependencies:
   flutter_test:
